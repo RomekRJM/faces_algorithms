@@ -15,12 +15,12 @@ import org.junit.Test;
 
 public class PicturesTest {
 	
-	private final int MIN_PHOTOS = 5;
+	private final int MIN_PHOTOS = 1;
 	
 	@Test
 	public void testNationDirsContainEnoughtPhotos() {
 		Map<String, Integer> picturesPerNationality = new HashMap<String, Integer>();
-		String rootPath = "f:/Eclipse Android/test/";
+		String rootPath = "F:/Eclipse Android/adt-bundle-windows-x86_64-20140624/workspace/faces_algorithms/src/main/resources/photos";
 		File picturesDir = new File(rootPath);
 
 		assertTrue(picturesDir.isDirectory());
@@ -40,7 +40,6 @@ public class PicturesTest {
 			
 			if(value < MIN_PHOTOS) {
 				minimumReached = false;
-				System.out.println(entry.getKey() + " has only " + value + " pictures.");
 			}
 		}
 		
@@ -50,7 +49,7 @@ public class PicturesTest {
 	@Test
 	public void testPicturesNotRepeated() throws Exception {
 		Map<String, List<String>> pictureMd5 = new HashMap<String, List<String>>();
-		String rootPath = "f:/Eclipse Android/test/";
+		String rootPath = "F:/Eclipse Android/adt-bundle-windows-x86_64-20140624/workspace/faces_algorithms/src/main/resources/photos";
 		File picturesDir = new File(rootPath);
 
 		assertTrue(picturesDir.isDirectory());
@@ -83,6 +82,10 @@ public class PicturesTest {
 			
 			if(value.size() > 1) {
 				repeatedPictures = true;
+				for(String s : entry.getValue()) {
+					System.out.print(s + " ");
+				}
+				System.out.println();
 			}
 		}
 		
