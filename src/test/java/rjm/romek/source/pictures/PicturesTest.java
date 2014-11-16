@@ -1,4 +1,4 @@
-package rjm.romek.source.randomizer;
+package rjm.romek.source.pictures;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

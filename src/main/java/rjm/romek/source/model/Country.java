@@ -5,6 +5,8 @@ import java.util.Set;
 public class Country {
 	private String flag;
 	private String name;
+	private String photoFolder;
+
 	private Set<Border> neighbours;
 	
 	public Country() {
@@ -27,6 +29,14 @@ public class Country {
 		this.name = name;
 	}
 	
+	public String getPhotoFolder() {
+		return photoFolder;
+	}
+	
+	public void setPhotoFolder(String photoFolder) {
+		this.photoFolder = photoFolder;
+	}
+	
 	public Set<Border> getBorders() {
 		return neighbours;
 	}
@@ -45,6 +55,7 @@ public class Country {
 		int result = 1;
 		result = prime * result + ((flag == null) ? 0 : flag.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((photoFolder == null) ? 0 : photoFolder.hashCode());
 		result = prime * result
 				+ ((neighbours == null) ? 0 : neighbours.hashCode());
 		return result;
@@ -68,6 +79,11 @@ public class Country {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
+			return false;
+		if (photoFolder == null) {
+			if (other.photoFolder != null)
+				return false;
+		} else if (!photoFolder.equals(other.photoFolder))
 			return false;
 		if (neighbours == null) {
 			if (other.neighbours != null)

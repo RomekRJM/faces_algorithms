@@ -7,9 +7,9 @@ import rjm.romek.source.model.Country;
 
 public class CountriesSerializer {
 	public static void main(String [] arg) {
-		File csvFile = new File("f:/Eclipse Android/list.csv");
+		File csvFile = new File("src/main/resources/list.csv");
 		File jsonFile = new File(csvFile.getAbsolutePath().replace(".csv", ".json"));
-		File flagDir = new File("F:/Eclipse Android/borders/List of countries and territories by land and maritime borders - Wikipedia, the free encyclopedia_files");
+		File flagDir = new File("src/main/resources/borders/List of countries and territories by land and maritime borders");
 		
 		CsvDeserializer csvDeserializer = new CsvDeserializer();
 		FlagExtractor flagExtractor = new FlagExtractor();
