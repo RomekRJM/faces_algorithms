@@ -3,8 +3,6 @@ package rjm.romek.source.randomizer;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.Random;
 import java.util.Set;
 
@@ -18,7 +16,7 @@ public class RandomizerTest {
 	@Test
 	public void test() throws Exception {
 		Set<Country> countries = new CsvDeserializer().deserialize(new File(
-				"f:/Eclipse Android/list.csv"));
+				"src/main/resources/list.csv"));
 
 		Randomizer randomizer = new Randomizer(countries);
 
@@ -32,14 +30,14 @@ public class RandomizerTest {
 		assertNotNull(randomNeighbour);
 		assertFalse(randomNeighbour.equals(country));
 
-		System.out.println(country.getName());
-		System.out.println(randomNeighbour.getName());
+		//System.out.println(country.getName());
+		//System.out.println(randomNeighbour.getName());
 	}
 
 	@Test
 	public void test1000000() throws Exception {
 		Set<Country> countries = new CsvDeserializer().deserialize(new File(
-				"f:/Eclipse Android/list.csv"));
+				"src/main/resources/list.csv"));
 		Randomizer randomizer = new Randomizer(countries);
 
 		SetIndexGetter<Country> setIndexGetter = new SetIndexGetter<Country>();
@@ -50,7 +48,7 @@ public class RandomizerTest {
 			int radius = random.nextInt(2) + 1;
 
 			Country country = setIndexGetter.get(countries, index);
-			System.out.println("Picked: " + country.getName());
+			//System.out.println("Picked: " + country.getName());
 			Country randomNeighbour = randomizer.randomNeighbour(country,
 					radius);
 
@@ -60,8 +58,8 @@ public class RandomizerTest {
 			if (randomNeighbour.equals(country)) {
 				int a = 0;
 			}
-			System.out.println(country.getName() + " is in " + radius
-					+ " radius to " + randomNeighbour.getName() + "\n\n\n");
+			/*System.out.println(country.getName() + " is in " + radius
+					+ " radius to " + randomNeighbour.getName() + "\n\n\n");*/
 			assertFalse(country.getName() + " points to itself!",
 					randomNeighbour.equals(country));
 
@@ -71,10 +69,10 @@ public class RandomizerTest {
 	@Test
 	public void testFlags() throws Exception {
 		Set<Country> countries = new CsvDeserializer().deserialize(new File(
-				"f:/Eclipse Android/list.csv"));
+				"src/main/resources/list.csv"));
 
 		File countryDir = new File(
-				"F:/Eclipse Android/borders/List of countries and territories by land and maritime borders - Wikipedia, the free encyclopedia_files");
+				"src/main/resources/borders/List of countries and territories by land and maritime borders");
 
 		assertTrue(countryDir.isDirectory());
 		File[] flagFiles = countryDir.listFiles();
@@ -91,25 +89,4 @@ public class RandomizerTest {
 			assertTrue(adjustedCountryName + " has not been found!", found);
 		}
 	}
-/*
-	@Test
-	public void testFlagsM() throws Exception {
-		Set<Country> countries = new Csv2Json().generateJSONFile(new File(
-				"f:/Eclipse Android/list.csv"));
-
-		File countryDir = new File(
-				"F:/Eclipse Android/borders/List of countries and territories by land and maritime borders - Wikipedia, the free encyclopedia_files");
-
-		assertTrue(countryDir.isDirectory());
-		File[] flagFiles = countryDir.listFiles();
-
-		for (File flagFile : flagFiles) {
-			String orgName = flagFile.getAbsolutePath();
-			String newName =  orgName.replace(".svg", "");
-			File newFile = new File(newName);
-			Files.copy(flagFile.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-			flagFile.delete();
-		}
-	}
-*/
 }

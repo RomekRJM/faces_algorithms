@@ -38,21 +38,21 @@ public class Randomizer {
 		current = border.getNeighbour();
 		if(radius <= 0) {
 			if(!startPoint.equals(current)) {
-				System.out.println(startPoint.getName() + " not equals to " + ((current!=null) ? current.getName() : null));
+				//System.out.println(startPoint.getName() + " not equals to " + ((current!=null) ? current.getName() : null));
 				return current;
 			} else {
-				System.out.println(startPoint.getName() + " equals to " + ((current!=null) ? current.getName() : null) + ". Picking randomly.");
+				//System.out.println(startPoint.getName() + " equals to " + ((current!=null) ? current.getName() : null) + ". Picking randomly.");
 				return randomCountry(startPoint);
 			}			
 		} else {
-			System.out.println("Going to: " + current.getName() + ", radius: " + radius );
+			//System.out.println("Going to: " + current.getName() + ", radius: " + radius );
 			return randomNeighbour(startPoint, current, radius);			
 		}
 	}
 	
 	private Country randomCountry(Country excluded) {
 		int tries = MAX_RANDOM_TRIES;
-		System.out.println("Going to pick random country for: " + excluded.getName());
+		//System.out.println("Going to pick random country for: " + excluded.getName());
 		Country randomCountry = null;
 		SetIndexGetter<Country> setIndexGetter = new SetIndexGetter<Country>();
 		
@@ -63,7 +63,7 @@ public class Randomizer {
 		} while (tries > 0 && randomCountry.equals(excluded));
 		
 		if(tries < 0) {
-			System.out.println("random country exceeded");
+			//System.out.println("random country exceeded");
 		}
 		
 		return randomCountry;
@@ -82,7 +82,7 @@ public class Randomizer {
 		} while (tries >= 0 && randomBorder.getNeighbour().equals(excluded));
 		
 		if(tries < 0) {
-			System.out.println("random border exceeded");
+			//System.out.println("random border exceeded");
 		}
 		
 		return randomBorder;
