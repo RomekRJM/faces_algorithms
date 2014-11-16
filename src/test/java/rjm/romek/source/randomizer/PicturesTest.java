@@ -40,6 +40,7 @@ public class PicturesTest {
 			
 			if(value < MIN_PHOTOS) {
 				minimumReached = false;
+				System.out.println(entry.getKey() + " has only " + value + " photos.");
 			}
 		}
 		
