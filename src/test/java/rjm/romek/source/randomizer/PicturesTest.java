@@ -16,11 +16,11 @@ import org.junit.Test;
 public class PicturesTest {
 	
 	private final int MIN_PHOTOS = 1;
+	private final String rootPath = "src/main/resources/photos";
 	
 	@Test
 	public void testNationDirsContainEnoughtPhotos() {
 		Map<String, Integer> picturesPerNationality = new HashMap<String, Integer>();
-		String rootPath = "F:/Eclipse Android/adt-bundle-windows-x86_64-20140624/workspace/faces_algorithms/src/main/resources/photos";
 		File picturesDir = new File(rootPath);
 
 		assertTrue(picturesDir.isDirectory());
@@ -49,7 +49,6 @@ public class PicturesTest {
 	@Test
 	public void testPicturesNotRepeated() throws Exception {
 		Map<String, List<String>> pictureMd5 = new HashMap<String, List<String>>();
-		String rootPath = "F:/Eclipse Android/adt-bundle-windows-x86_64-20140624/workspace/faces_algorithms/src/main/resources/photos";
 		File picturesDir = new File(rootPath);
 
 		assertTrue(picturesDir.isDirectory());
@@ -61,7 +60,7 @@ public class PicturesTest {
 			
 			for(File photo : photos) {
 				assertFalse(photo.isDirectory());
-				String path = photo.getAbsolutePath().substring(rootPath.length());
+				String path = photo.getPath();
 				String md5 = computeMd5(photo);
 				
 				if(pictureMd5.containsKey(md5)) {
@@ -75,6 +74,7 @@ public class PicturesTest {
 		}
 		
 		boolean repeatedPictures = false;
+		String separator = System.getProperty("file.separator");
 		int i = 0;
 		
 		for(Map.Entry<String, List<String>> entry : pictureMd5.entrySet()) {
