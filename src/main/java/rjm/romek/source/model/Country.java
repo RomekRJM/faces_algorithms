@@ -33,7 +33,7 @@ public class Country {
 		return photoFolder;
 	}
 	
-	public void setPhotoFolder(String photoFolder) {
+	public void setPhotoDir(String photoFolder) {
 		this.photoFolder = photoFolder;
 	}
 	
