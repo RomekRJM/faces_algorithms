@@ -1,5 +1,7 @@
 package rjm.romek.source.gen;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,7 @@ public class PhotoDirAdderTest {
 		for(Country country : countries) {
 			//assertNotNull(country.getName() + " does not have matching folder!", country.getPhotoFolder());
 			boolean removed = allDirNames.remove(country.getName());
+			if(!removed)
 			System.out.println(country.getName());
 			
 		}
