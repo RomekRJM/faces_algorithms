@@ -20,7 +20,7 @@ public class CsvDeserializer {
 		Set<Country> countries = new HashSet<Country>();
 		
 		try {
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(csvFile)));
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(csvFile), System.getProperty("file.encoding")));
 			while((line = br.readLine()) != null) {
 				int colonPos = line.indexOf(":");
 				Country country = new Country();

@@ -29,7 +29,7 @@ Botswana:  Namibia(L),   South Africa(L),   Zambia(L),   Zimbabwe (L)
 Brazil:  Argentina(L),   Bolivia(L),   Colombia(L), France,  Guyana(L),   Paraguay(L), Peru(L), Suriname(L),   Uruguay,  Venezuela(L)
 Brunei:  Malaysia
 Bulgaria:  Greece(L),   Republic of Macedonia(L),   Romania,  Serbia(L),   Turkey
-Burkina Faso:  Benin(L),   Côte d'Ivoire(L),   Ghana(L),   Mali(L),   Niger(L),   Togo (L)
+Burkina Faso:  Benin(L),   CÃ´te d'Ivoire(L),   Ghana(L),   Mali(L),   Niger(L),   Togo (L)
 Burma:  Bangladesh,  China(L),   India,  Laos(L),   Thailand
 Burundi:  Democratic Republic of the Congo(L),   Rwanda(L),   Tanzania (L)
 Cambodia:  Laos(L),   Thailand,  Vietnam
@@ -48,10 +48,10 @@ Comoros:  France(M),   Madagascar(M),   Mozambique(M),   Seychelles(M),   Tanzan
 Democratic Republic of the Congo:  Angola,  Burundi(L),   Central African Republic(L),   Republic of the Congo(L),   Rwanda(L),   South Sudan(L),   Tanzania(L),   Uganda(L),   Zambia (L)
 Republic of the Congo:  Angola,  Cameroon(L),   Central African Republic(L),   Democratic Republic of the Congo(L),   Gabon
 Costa Rica:  Colombia(M),   Ecuador(M),   Nicaragua,  Panama
-Côte d'Ivoire:  Burkina Faso(L),   Ghana,  Guinea(L),   Liberia,  Mali (L)
+CÃ´te d'Ivoire:  Burkina Faso(L),   Ghana,  Guinea(L),   Liberia,  Mali (L)
 Croatia:  Bosnia and Herzegovina,  Hungary(L),   Italy(M),   Montenegro,  Serbia(L),   Slovenia
 Cuba:  Bahamas(M),   Haiti(M),   Honduras(M),   Jamaica(M),   Mexico(M),   United States(M), United Kingdom(M)
-Curaçao:  Dominican Republic(M),   Venezuela (M)
+CuraÃ§ao:  Dominican Republic(M),   Venezuela (M)
 Cyprus:  Egypt(M),   Greece(M),   Israel(M),   Lebanon(M),   Syria(M),   Turkey(M), United Kingdom,  Northern Cyprus
 Northern Cyprus:  Cyprus,  Syria(M),   Turkey(M)
 Czech Republic:  Austria(L),   Germany(L),   Poland(L),   Slovakia (L)
@@ -63,7 +63,7 @@ East Timor:  Australia(M),   Indonesia
 Ecuador:  Colombia,  Costa Rica(M),   Peru
 Egypt:  Cyprus(M),   Greece(M),   Israel,  Jordan(M),   Libya,  Saudi Arabia(M),   Sudan,  Turkey(M), United Kingdom(M), Palestine
 El Salvador:  Guatemala,  Honduras,  Nicaragua (M)
-Equatorial Guinea:  Cameroon,  Gabon,  Nigeria(M),   São Tomé and Príncipe (M)
+Equatorial Guinea:  Cameroon,  Gabon,  Nigeria(M),   SÃ£o TomÃ© and PrÃ­ncipe (M)
 Eritrea:  Djibouti,  Saudi Arabia(M),   Sudan,  Ethiopia(L),   Yemen (M)
 Estonia:  Finland(M),   Latvia,  Russia,  Sweden (M)
 Ethiopia:  Djibouti(L),   Eritrea(L),   Kenya(L),   Somalia(L),   South Sudan(L),   Sudan(L),   Somaliland (L)
@@ -74,18 +74,18 @@ Finland:  Estonia(M),   Norway(L),   Russia,  Sweden
 France:  Andorra(L),   Antigua and Barbuda(M),   Barbados(M),   Belgium,  Brazil,  Comoros(M),   Dominica(M),   Germany(L),   Italy,  Luxembourg(L),   Madagascar(M),   Mauritius(M),   Mozambique(M),   Monaco,  Saint Lucia(M),   Spain,   Switzerland(L),   Suriname,  United Kingdom(M),   Venezuela(M)
 French Polynesia:  Kiribati(M),  New Zealand(M),  United Kingdom(M)
 French Southern and Antarctic Lands:  Comoros(M),   Madagascar(M),   Mauritius(M),   Mozambique(M),   Seychelles(M),   Australia(M)
-Gabon:  Cameroon(L),   Republic of the Congo,  Equatorial Guinea,  São Tomé and Príncipe (M)
+Gabon:  Cameroon(L),   Republic of the Congo,  Equatorial Guinea,  SÃ£o TomÃ© and PrÃ­ncipe (M)
 The Gambia:  Cape Verde(M),   Senegal
 Palestine:  Egypt,  Israel
 Georgia:  Armenia(L),   Azerbaijan(L),   Russia,  Turkey,  Ukraine(M),   Abkhazia,  South Ossetia (L)
 Germany:  Austria(L),   Belgium(L),   Czech Republic(L),   Denmark,  France(L),   Luxembourg(L),   Netherlands,  Poland,  Sweden(M),    Switzerland(L),   United Kingdom (M)
-Ghana:  Benin(M),   Burkina Faso(L),   Côte d'Ivoire,  Nigeria(M),   Togo
+Ghana:  Benin(M),   Burkina Faso(L),   CÃ´te d'Ivoire,  Nigeria(M),   Togo
 Gibraltar:  Morocco(M),   Spain
 Greece:  Albania,  Bulgaria(L),   Cyprus(M),   Egypt(M),   Italy(M),   Libya(M),   Republic of Macedonia(L),   Turkey
 Grenada:  Saint Vincent and the Grenadines(M),   Trinidad and Tobago (M)
 Guam:  Federated States of Micronesia (M)
 Guatemala:  Belize,  El Salvador,  Honduras,  Mexico
-Guinea:  Côte d'Ivoire(L),   Guinea-Bissau,  Liberia(L),   Mali(L),   Senegal(L),   Sierra Leone
+Guinea:  CÃ´te d'Ivoire(L),   Guinea-Bissau,  Liberia(L),   Mali(L),   Senegal(L),   Sierra Leone
 Guinea-Bissau:  Guinea,  Senegal
 Guyana:  Barbados(M), Brazil(L),   Suriname,  Trinidad and Tobago(M),   Venezuela 
 Haiti:  Bahamas(M),   Colombia(M),   Cuba(M),   Dominican Republic,  Jamaica(M),   United States(M), United Kingdom(M)
@@ -117,7 +117,7 @@ Laos:  Burma(L),   Cambodia(L),   China(L),   Thailand(L),   Vietnam (L)
 Latvia:  Belarus(L),   Estonia,  Lithuania,  Russia(L),   Sweden (M)
 Lebanon:  Cyprus(M),   Israel,  Syria, United Kingdom(M)
 Lesotho:  South Africa (L)
-Liberia:  Côte d'Ivoire,  Guinea(L),   Sierra Leone
+Liberia:  CÃ´te d'Ivoire,  Guinea(L),   Sierra Leone
 Libya:  Algeria(L),   Chad(L),   Egypt,  Greece(M),   Italy(M),   Malta(M),   Niger(L),   Sudan(L),   Tunisia
 Liechtenstein:  Austria(L),    Switzerland (L)
 Lithuania:  Belarus(L),   Latvia,  Poland,  Russia,  Sweden (M)
@@ -128,7 +128,7 @@ Madagascar:  Comoros(M),   France(M),   Mozambique(M),   Seychelles(M),   France
 Malawi:  Mozambique(L),   Tanzania(L),   Zambia (L)
 Malaysia:  Brunei,  Indonesia,  Philippines(M),   Singapore(M),   Thailand,  Vietnam (M)
 Maldives:  India(M),   Sri Lanka(M), United Kingdom(M)
-Mali:  Algeria(L),   Burkina Faso(L),   Côte d'Ivoire(L),   Guinea(L),   Mauritania(L),   Niger(L),   Senegal (L)
+Mali:  Algeria(L),   Burkina Faso(L),   CÃ´te d'Ivoire(L),   Guinea(L),   Mauritania(L),   Niger(L),   Senegal (L)
 Malta:  Italy(M),   Libya (M)
 Marshall Islands:  Kiribati(M), Federated States of Micronesia(M),   Nauru(M), United States(M)
 Mauritania:  Algeria(L),   Cape Verde(M),   Mali(L),   Morocco,  Senegal
@@ -151,7 +151,7 @@ New Caledonia:  Australia(M),   Fiji(M),   Papua New Guinea(M),   Solomon Island
 New Zealand:  Australia(M),   Fiji(M),   Kiribati(M),   Samoa(M),   Tonga(M), United States(M), France(M) 
 Nicaragua:  Colombia(M),   Costa Rica,  El Salvador(M),   Honduras
 Niger:  Algeria(L),   Benin(L),   Burkina Faso(L),   Chad(L),   Libya(L),   Mali(L),   Nigeria (L)
-Nigeria:  Benin,  Cameroon,  Chad(L),   Equatorial Guinea(M),   Ghana(M),   Niger(L),   São Tomé and Príncipe (M)
+Nigeria:  Benin,  Cameroon,  Chad(L),   Equatorial Guinea(M),   Ghana(M),   Niger(L),   SÃ£o TomÃ© and PrÃ­ncipe (M)
 Niue:  Tonga(M),   American Samoa, United States(M), New Zealand(M)
 Norfolk Island:  New Zealand(M),  France(M)
 Northern Mariana Islands:  Japan (M)
@@ -178,7 +178,7 @@ Saint Lucia:  Barbados(M),   France(M),   Saint Vincent and the Grenadines(M),  
 Saint Vincent and the Grenadines:  Barbados(M),   Grenada(M),   Saint Lucia(M),   Trinidad and Tobago(M),   Venezuela (M)
 Samoa:  Tonga(M),  United States(M),  New Zealand(M), France(M)
 San Marino:  Italy (L)
-São Tomé and Príncipe:  Equatorial Guinea(M),   Gabon(M),   Nigeria (M)
+SÃ£o TomÃ© and PrÃ­ncipe:  Equatorial Guinea(M),   Gabon(M),   Nigeria (M)
 Saudi Arabia:  Bahrain(M),   Egypt(M),   Eritrea(M),   Iran(M),   Iraq(L),   Jordan,  Kuwait,  Oman(L),   Qatar,  Sudan(M),   United Arab Emirates,  Yemen
 Senegal:  Cape Verde(M),   The Gambia,  Guinea(L),   Guinea-Bissau,  Mali(L),   Mauritania
 Serbia:  Albania(L),   Bosnia and Herzegovina(L),   Bulgaria(L),   Croatia(L),   Hungary(L),   Republic of Macedonia(L),   Montenegro(L),   Romania(L),   Kosovo(L)
