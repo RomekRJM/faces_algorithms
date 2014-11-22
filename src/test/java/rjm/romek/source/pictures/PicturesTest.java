@@ -13,9 +13,10 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import rjm.romek.source.gen.PhotoDirChecker;
+
 public class PicturesTest {
 	
-	private final int MIN_PHOTOS = 1;
 	private final String rootPath = "src/main/resources/photos";
 	
 	@Test
@@ -38,13 +39,13 @@ public class PicturesTest {
 		for(Map.Entry<String, Integer> entry : picturesPerNationality.entrySet()) {
 			Integer value = entry.getValue();
 			
-			if(value < MIN_PHOTOS) {
+			if(value < PhotoDirChecker.MIN_PHOTOS) {
 				minimumReached = false;
 				System.out.println(entry.getKey() + " has only " + value + " photos.");
 			}
 		}
 		
-		assertTrue("Each folder should contain at least: " + MIN_PHOTOS + " photos.", minimumReached);
+		assertTrue("Each folder should contain at least: " + PhotoDirChecker.MIN_PHOTOS + " photos.", minimumReached);
 	}
 
 	@Test

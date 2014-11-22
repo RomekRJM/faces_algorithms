@@ -1,4 +1,5 @@
 package rjm.romek.source.model;
+
 import java.util.HashSet;
 import java.util.Set;
 

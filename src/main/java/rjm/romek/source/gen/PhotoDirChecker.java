@@ -2,20 +2,17 @@ package rjm.romek.source.gen;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-
-import org.apache.commons.lang3.StringUtils;
 
 import rjm.romek.source.model.Country;
 
-public class PhotoDirAdder {
+public class PhotoDirChecker {
 	
-	public void addPhotosOfFamousPeopleDir(Set<Country> countries, File nationalityDir) {
-		List<String> allDirNames = prepareDirNamesList(nationalityDir);
+	public static final int MIN_PHOTOS = 1;
+	
+	public void disableCountriesWithoutPhotos(Set<Country> countries, File nationalityDir) {
+		List<String> allDirNames = prepareDirNamesListMatchingCriteria(nationalityDir);
 
 		for (Country country : countries) {
 			if(!allDirNames.contains(country.getName())) {
@@ -24,7 +21,7 @@ public class PhotoDirAdder {
 		}
 	}
 	
-	List<String> prepareDirNamesList(File nationalityDir) {
+	List<String> prepareDirNamesListMatchingCriteria(File nationalityDir) {
 		List<String> map = new ArrayList<String>();
 		
 		if(!nationalityDir.isDirectory()) {
@@ -34,9 +31,12 @@ public class PhotoDirAdder {
 		File[] photoDirs = nationalityDir.listFiles();
 		
 		for(File p : photoDirs) {
-			map.add(p.getName());
+			if(p.isDirectory() && p.list().length >= MIN_PHOTOS) {
+				map.add(p.getName());
+			}
 		}
 		
 		return map;
 	}
+	
 }

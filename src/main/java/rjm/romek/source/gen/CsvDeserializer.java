@@ -1,18 +1,12 @@
 package rjm.romek.source.gen;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.HashSet;
 import java.util.Set;
-
-import com.google.gson.Gson;
 
 import rjm.romek.source.model.Border;
 import rjm.romek.source.model.BorderType;
