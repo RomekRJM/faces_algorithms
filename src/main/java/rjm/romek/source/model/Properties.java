@@ -7,7 +7,7 @@ public class Properties {
 		public static final String LIST_CSV = RESOURCES_DIR + "/list.csv";
 		public static final String MISSING = RESOURCES_DIR + "/missing";
 		public static final String PHOTOS = RESOURCES_DIR + "/photos";
-		public static final String BORDERS = "src/main/resources/borders/List of countries and territories by land and maritime borders";
+		public static final String FLAGS = "src/main/resources/flags";
 	}
 	
 	public static class Extension {

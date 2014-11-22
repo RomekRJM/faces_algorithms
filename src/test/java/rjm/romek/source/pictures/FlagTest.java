@@ -18,7 +18,7 @@ public class FlagTest {
 		Set<Country> countries = new CsvDeserializer().deserialize(new File(
 				Path.LIST_CSV));
 
-		File countryDir = new File(Path.BORDERS);
+		File countryDir = new File(Path.FLAGS);
 
 		assertTrue(countryDir.isDirectory());
 		File[] flagFiles = countryDir.listFiles();
