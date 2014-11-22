@@ -5,7 +5,7 @@ import java.util.Set;
 public class Country {
 	private String flag;
 	private String name;
-	private String photoFolder;
+	private boolean disabled;
 
 	private Set<Border> neighbours;
 	
@@ -29,14 +29,6 @@ public class Country {
 		this.name = name;
 	}
 	
-	public String getPhotoFolder() {
-		return photoFolder;
-	}
-	
-	public void setPhotoDir(String photoFolder) {
-		this.photoFolder = photoFolder;
-	}
-	
 	public Set<Border> getBorders() {
 		return neighbours;
 	}
@@ -49,13 +41,21 @@ public class Country {
 		neighbours.add(neighbour);
 	}
 
+	public boolean isDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (disabled ? 1231 : 1237);
 		result = prime * result + ((flag == null) ? 0 : flag.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((photoFolder == null) ? 0 : photoFolder.hashCode());
 		result = prime * result
 				+ ((neighbours == null) ? 0 : neighbours.hashCode());
 		return result;
@@ -70,6 +70,8 @@ public class Country {
 		if (!(obj instanceof Country))
 			return false;
 		Country other = (Country) obj;
+		if (disabled != other.disabled)
+			return false;
 		if (flag == null) {
 			if (other.flag != null)
 				return false;
@@ -79,11 +81,6 @@ public class Country {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
-			return false;
-		if (photoFolder == null) {
-			if (other.photoFolder != null)
-				return false;
-		} else if (!photoFolder.equals(other.photoFolder))
 			return false;
 		if (neighbours == null) {
 			if (other.neighbours != null)
