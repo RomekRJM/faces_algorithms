@@ -4,13 +4,15 @@ import java.io.File;
 import java.util.Set;
 
 import rjm.romek.source.model.Country;
+import static rjm.romek.source.model.Properties.Path;
+import static rjm.romek.source.model.Properties.Extension;;
 
 public class CountriesSerializer {
 	public static void main(String [] arg) {
-		File csvFile = new File("src/main/resources/list.csv");
-		File jsonFile = new File(csvFile.getAbsolutePath().replace(".csv", ".json"));
-		File flagDir = new File("src/main/resources/borders/List of countries and territories by land and maritime borders");
-		File photoDir = new File("src/main/resources/photos");
+		File csvFile = new File(Path.LIST_CSV);
+		File jsonFile = new File(csvFile.getAbsolutePath().replace(Extension.CSV, Extension.JSON));
+		File flagDir = new File(Path.BORDERS);
+		File photoDir = new File(Path.PHOTOS);
 		
 		CsvDeserializer csvDeserializer = new CsvDeserializer();
 		FlagExtractor flagExtractor = new FlagExtractor();

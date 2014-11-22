@@ -13,16 +13,17 @@ import org.apache.commons.io.FileUtils;
 import org.testng.annotations.Test;
 
 import rjm.romek.source.model.Country;
+import static rjm.romek.source.model.Properties.Path;
 
 public class PhotoDirCheckerTest {
 	
 	@Test
 	public void testAllCountriesMatchedToDirName() throws IOException {
 		Set<Country> countries = new CsvDeserializer().deserialize(new File(
-				"src/main/resources/list.csv"));
+				Path.LIST_CSV));
 		
-		List<String> missingCountries = FileUtils.readLines(new File("src/main/resources/missing"));
-		List<String> allDirNames = prepareDirNamesList(new File("src/main/resources/photos"));
+		List<String> missingCountries = FileUtils.readLines(new File(Path.MISSING));
+		List<String> allDirNames = prepareDirNamesList(new File(Path.PHOTOS));
 		
 		for(Country country : countries) {
 			boolean removed = allDirNames.remove(country.getName());

@@ -3,10 +3,16 @@ package rjm.romek.source.randomizer;
 import java.util.Random;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import rjm.romek.source.model.Border;
 import rjm.romek.source.model.Country;
 
 public class Randomizer {
+	
+	Logger logger = LoggerFactory.getLogger(Randomizer.class);
+	
 	private Set<Country> countries;
 	private Random random;
 	private static final int MAX_RANDOM_TRIES = 10;
@@ -38,21 +44,21 @@ public class Randomizer {
 		current = border.getNeighbour();
 		if(radius <= 0) {
 			if(!startPoint.equals(current)) {
-				//System.out.println(startPoint.getName() + " not equals to " + ((current!=null) ? current.getName() : null));
+				logger.debug(startPoint.getName() + " not equals to " + ((current!=null) ? current.getName() : null));
 				return current;
 			} else {
-				//System.out.println(startPoint.getName() + " equals to " + ((current!=null) ? current.getName() : null) + ". Picking randomly.");
+				logger.debug(startPoint.getName() + " equals to " + ((current!=null) ? current.getName() : null) + ". Picking randomly.");
 				return randomCountry(startPoint);
 			}			
 		} else {
-			//System.out.println("Going to: " + current.getName() + ", radius: " + radius );
+			logger.debug("Going to: " + current.getName() + ", radius: " + radius );
 			return randomNeighbour(startPoint, current, radius);			
 		}
 	}
 	
 	private Country randomCountry(Country excluded) {
 		int tries = MAX_RANDOM_TRIES;
-		//System.out.println("Going to pick random country for: " + excluded.getName());
+		logger.debug("Going to pick random country for: " + excluded.getName());
 		Country randomCountry = null;
 		SetIndexGetter<Country> setIndexGetter = new SetIndexGetter<Country>();
 		
@@ -63,7 +69,7 @@ public class Randomizer {
 		} while (tries > 0 && randomCountry.equals(excluded));
 		
 		if(tries < 0) {
-			//System.out.println("random country exceeded");
+			logger.debug("random country exceeded");
 		}
 		
 		return randomCountry;
@@ -82,7 +88,7 @@ public class Randomizer {
 		} while (tries >= 0 && randomBorder.getNeighbour().equals(excluded));
 		
 		if(tries < 0) {
-			//System.out.println("random border exceeded");
+			logger.debug("random border exceeded");
 		}
 		
 		return randomBorder;

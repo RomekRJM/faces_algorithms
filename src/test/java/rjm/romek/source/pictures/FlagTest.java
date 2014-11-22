@@ -9,16 +9,16 @@ import org.testng.annotations.Test;
 
 import rjm.romek.source.gen.CsvDeserializer;
 import rjm.romek.source.model.Country;
+import static rjm.romek.source.model.Properties.Path;
 
 public class FlagTest {
 
 	@Test
 	public void testFlags() throws Exception {
 		Set<Country> countries = new CsvDeserializer().deserialize(new File(
-				"src/main/resources/list.csv"));
+				Path.LIST_CSV));
 
-		File countryDir = new File(
-				"src/main/resources/borders/List of countries and territories by land and maritime borders");
+		File countryDir = new File(Path.BORDERS);
 
 		assertTrue(countryDir.isDirectory());
 		File[] flagFiles = countryDir.listFiles();

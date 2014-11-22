@@ -14,10 +14,11 @@ import java.util.Map;
 import org.testng.annotations.Test;
 
 import rjm.romek.source.gen.PhotoDirChecker;
+import static rjm.romek.source.model.Properties.Path;
 
 public class PicturesTest {
 	
-	private final String rootPath = "src/main/resources/photos";
+	private final String rootPath = Path.PHOTOS;
 	
 	@Test
 	public void testNationDirsContainEnoughtPhotos() {
@@ -76,8 +77,6 @@ public class PicturesTest {
 		}
 		
 		boolean repeatedPictures = false;
-		String separator = System.getProperty("file.separator");
-		int i = 0;
 		
 		for(Map.Entry<String, List<String>> entry : pictureMd5.entrySet()) {
 			List<String> value = entry.getValue();

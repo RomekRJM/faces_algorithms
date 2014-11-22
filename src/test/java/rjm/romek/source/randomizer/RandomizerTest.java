@@ -6,20 +6,30 @@ import java.io.File;
 import java.util.Random;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import rjm.romek.source.gen.CsvDeserializer;
 import rjm.romek.source.model.Country;
+import rjm.romek.source.model.Properties.Path;
 
 public class RandomizerTest {
+	
+	static final Logger logger = LoggerFactory.getLogger(RandomizerTest.class);
+	
+	private Set<Country> countries;
+	private Randomizer randomizer;
+	
+	@BeforeMethod
+	public void setUp() {
+		countries = new CsvDeserializer().deserialize(new File(Path.LIST_CSV));
+		randomizer = new Randomizer(countries);		
+	}
 
 	@Test
 	public void test() throws Exception {
-		Set<Country> countries = new CsvDeserializer().deserialize(new File(
-				"src/main/resources/list.csv"));
-
-		Randomizer randomizer = new Randomizer(countries);
-
 		countries.iterator().next();
 		countries.iterator().next();
 		countries.iterator().next();
@@ -29,17 +39,10 @@ public class RandomizerTest {
 		assertNotNull(country);
 		assertNotNull(randomNeighbour);
 		assertFalse(randomNeighbour.equals(country));
-
-		//System.out.println(country.getName());
-		//System.out.println(randomNeighbour.getName());
 	}
 
 	@Test
 	public void test1000000() throws Exception {
-		Set<Country> countries = new CsvDeserializer().deserialize(new File(
-				"src/main/resources/list.csv"));
-		Randomizer randomizer = new Randomizer(countries);
-
 		SetIndexGetter<Country> setIndexGetter = new SetIndexGetter<Country>();
 		Random random = new Random();
 
@@ -48,7 +51,7 @@ public class RandomizerTest {
 			int radius = random.nextInt(2) + 1;
 
 			Country country = setIndexGetter.get(countries, index);
-			//System.out.println("Picked: " + country.getName());
+			logger.debug("Picked: " + country.getName());
 			Country randomNeighbour = randomizer.randomNeighbour(country,
 					radius);
 
@@ -58,8 +61,8 @@ public class RandomizerTest {
 			if (randomNeighbour.equals(country)) {
 				int a = 0;
 			}
-			/*System.out.println(country.getName() + " is in " + radius
-					+ " radius to " + randomNeighbour.getName() + "\n\n\n");*/
+			logger.debug(country.getName() + " is in " + radius
+					+ " radius to " + randomNeighbour.getName() + "\n\n\n");
 			assertFalse(randomNeighbour.equals(country), country.getName() + " points to itself!");
 
 		}
