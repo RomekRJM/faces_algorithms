@@ -1,8 +1,7 @@
 package rjm.romek.source.gen;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import rjm.romek.source.model.Country;
 
@@ -28,9 +27,9 @@ public class PhotoDirCheckerTest {
 		for(Country country : countries) {
 			boolean removed = allDirNames.remove(country.getName());
 			if(removed) {
-				assertFalse(country.getName() + " has matching folder and shouldn't be disabled!", country.isDisabled());
+				assertFalse(country.isDisabled(), country.getName() + " has matching folder and shouldn't be disabled!");
 			} else if (!missingCountries.contains(country.getName())) {
-				assertTrue(country.getName() + " does not have matching folder and is not disabled!", country.isDisabled());
+				assertTrue(country.isDisabled(), country.getName() + " does not have matching folder and is not disabled!");
 			}
 			
 		}

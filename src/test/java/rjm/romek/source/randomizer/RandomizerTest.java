@@ -1,12 +1,12 @@
 package rjm.romek.source.randomizer;
 
-import static org.junit.Assert.*;
+import static org.testng.Assert.*;
 
 import java.io.File;
 import java.util.Random;
 import java.util.Set;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import rjm.romek.source.gen.CsvDeserializer;
 import rjm.romek.source.model.Country;
@@ -60,8 +60,7 @@ public class RandomizerTest {
 			}
 			/*System.out.println(country.getName() + " is in " + radius
 					+ " radius to " + randomNeighbour.getName() + "\n\n\n");*/
-			assertFalse(country.getName() + " points to itself!",
-					randomNeighbour.equals(country));
+			assertFalse(randomNeighbour.equals(country), country.getName() + " points to itself!");
 
 		}
 	}

@@ -1,11 +1,11 @@
 package rjm.romek.source.pictures;
 
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertTrue;
 
 import java.io.File;
 import java.util.Set;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import rjm.romek.source.gen.CsvDeserializer;
 import rjm.romek.source.model.Country;
@@ -32,7 +32,7 @@ public class FlagTest {
 					found = true;
 				}
 			}
-			assertTrue(adjustedCountryName + " has not been found!", found);
+			assertTrue(found, adjustedCountryName + " has not been found!");
 		}
 	}
 }

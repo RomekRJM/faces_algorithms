@@ -1,7 +1,7 @@
 package rjm.romek.source.pictures;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import rjm.romek.source.gen.PhotoDirChecker;
 
@@ -45,7 +45,7 @@ public class PicturesTest {
 			}
 		}
 		
-		assertTrue("Each folder should contain at least: " + PhotoDirChecker.MIN_PHOTOS + " photos.", minimumReached);
+		assertTrue(minimumReached, "Each folder should contain at least: " + PhotoDirChecker.MIN_PHOTOS + " photos.");
 	}
 
 	@Test
@@ -91,7 +91,7 @@ public class PicturesTest {
 			}
 		}
 		
-		assertFalse("There mustn't be repeated pictures in the folder", repeatedPictures);
+		assertFalse(repeatedPictures, "There mustn't be repeated pictures in the folder");
 	}
 
 	public String computeMd5(File file) throws Exception {
