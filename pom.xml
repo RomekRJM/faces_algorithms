@@ -16,6 +16,18 @@
 	</properties>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>*.csv</exclude>
+					<exclude>flags/</exclude>
+					<exclude>photos/</exclude>
+					<exclude>unknown_photos/</exclude>
+				</excludes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
