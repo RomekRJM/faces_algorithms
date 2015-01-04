@@ -32,7 +32,8 @@ public class RenamerTest {
 	
 	@Test
 	public void test() throws Exception {
-		Renamer renamer = new Renamer();
+		int maxFilesInFolder = 3;
+		Renamer renamer = new Renamer(maxFilesInFolder);
 		renamer.changeFileNamesToUUIDSWithinFolder(RESOURCES_DIR,
 				TEST_DIR, TEST_NAMING);
 		
@@ -56,7 +57,7 @@ public class RenamerTest {
 				}
 				assertEquals(oldFile.length(), newFile.length());
 			} else {
-				assertEquals(oldFile.list().length, newFile.list().length);
+				assertEquals(Math.min(oldFile.list().length, maxFilesInFolder), newFile.list().length);
 			}
 		}
 	}
@@ -73,7 +74,7 @@ public class RenamerTest {
 	
 	@AfterClass
 	public void tearDown() throws IOException {
-		FileUtils.forceDelete(TEST_DIR);
-		FileUtils.forceDelete(TEST_NAMING);
+		//FileUtils.forceDelete(TEST_DIR);
+		//FileUtils.forceDelete(TEST_NAMING);
 	}
 }
