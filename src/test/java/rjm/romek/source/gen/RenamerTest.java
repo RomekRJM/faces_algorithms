@@ -1,7 +1,7 @@
 package rjm.romek.source.gen;
 
-import static org.junit.Assert.*;
-
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
@@ -11,13 +11,13 @@ import java.util.Map.Entry;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import com.google.gson.Gson;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import rjm.romek.source.model.Properties;
+
+import com.google.gson.Gson;
 
 public class RenamerTest {
 
@@ -25,7 +25,7 @@ public class RenamerTest {
 	public static final File TEST_NAMING = new File("target/test-files/naming.txt");
 	public static final File RESOURCES_DIR = new File(Properties.RESOURCES_DIR);
 	
-	@Before
+	@BeforeClass
 	public void setUp() throws IOException {
 		FileUtils.forceMkdir(TEST_DIR);
 	}
@@ -71,7 +71,7 @@ public class RenamerTest {
 		return null;
 	}
 	
-	@After
+	@AfterClass
 	public void tearDown() throws IOException {
 		FileUtils.forceDelete(TEST_DIR);
 		FileUtils.forceDelete(TEST_NAMING);
