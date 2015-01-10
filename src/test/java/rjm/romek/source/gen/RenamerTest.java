@@ -23,7 +23,7 @@ public class RenamerTest {
 
 	public static final File TEST_DIR = new File("target/test-files/test");
 	public static final File TEST_NAMING = new File("target/test-files/naming.txt");
-	public static final File RESOURCES_DIR = new File(Properties.RESOURCES_DIR);
+	public static final File RESOURCES_DIR = new File(Properties.Path.PHOTOS);
 	
 	@BeforeClass
 	public void setUp() throws IOException {

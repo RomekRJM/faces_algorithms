@@ -1,6 +1,6 @@
 package rjm.romek.source.model;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Country {
@@ -11,7 +11,7 @@ public class Country {
 	private Set<Border> neighbours;
 	
 	public Country() {
-		neighbours = new HashSet<Border>();
+		neighbours = new LinkedHashSet<Border>();
 	}
 	
 	public String getFlag() {
@@ -89,5 +89,11 @@ public class Country {
 		} else if (!neighbours.equals(other.neighbours))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "Country [flag=" + flag + ", name=" + name + ", disabled="
+				+ disabled + ", neighbours=" + neighbours + "]";
 	}
 }
