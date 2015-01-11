@@ -1,6 +1,7 @@
 package rjm.romek.source.gen;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Set;
 
 import rjm.romek.source.model.Country;
@@ -23,7 +24,10 @@ public class CountriesDataGenerator {
 		Set<Country> countries = csvDeserializer.deserialize(csvFile);
 		flagExtractor.addFlags(countries, flagDir);
 		photoDirAdder.disableCountriesWithoutPhotos(countries, photoDir);
-		jsonGenerator.serialize(jsonFile, countries);
+		try {
+			jsonGenerator.serialize(jsonFile, countries);
+		} catch (FileNotFoundException e) {
+		}
 	}
 	
 }
