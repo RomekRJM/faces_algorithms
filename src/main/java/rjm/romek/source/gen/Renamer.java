@@ -14,7 +14,6 @@ import org.apache.commons.lang3.StringUtils;
 import com.google.gson.Gson;
 
 public class Renamer {
-	public Map<String, String> namingMap;
 	public int maxFilesInDir;
 
 	public Renamer() {
@@ -22,23 +21,25 @@ public class Renamer {
 	}
 
 	public Renamer(int maxFilesInDir) {
-		namingMap = new HashMap<String, String>();
 		this.maxFilesInDir = maxFilesInDir;
 	}
 
-	public void changeFileNamesToUUIDSWithinFolder(File srcDir, File destDir,
-			File namingMap) throws IOException {
+	public Map<String, String> changeFileNamesToUUIDSWithinFolder(File srcDir, File destDir,
+			File namingMapFile) throws IOException {
+		Map<String, String> namingMap = new HashMap<String, String>();
+		
 		if (!srcDir.isDirectory() || !destDir.isDirectory()) {
-			return;
+			return null;
 		}
 
 		FileUtils.copyDirectory(srcDir, destDir);
-		replaceFileNamesWithUUIDSAndWriteNamingMap(destDir);
-		writeNamingMap(namingMap);
+		replaceFileNamesWithUUIDSAndWriteNamingMap(destDir, namingMap);
+		writeNamingMap(namingMapFile, namingMap);
 
+		return namingMap;
 	}
 
-	public void replaceFileNamesWithUUIDSAndWriteNamingMap(File dir) {
+	private void replaceFileNamesWithUUIDSAndWriteNamingMap(File dir, Map<String, String> namingMap) {
 		if (!dir.isDirectory()) {
 			return;
 		}
@@ -48,7 +49,7 @@ public class Renamer {
 
 		for (File file : files) {
 			if (file.isDirectory()) {
-				replaceFileNamesWithUUIDSAndWriteNamingMap(file);
+				replaceFileNamesWithUUIDSAndWriteNamingMap(file, namingMap);
 			} else {
 				++cntr;
 			}
@@ -80,7 +81,7 @@ public class Renamer {
 		return newName;
 	}
 
-	private void writeNamingMap(File file) {
+	private void writeNamingMap(File file, Map<String, String> namingMap) {
 		FileOutputStream fos = null;
 
 		try {

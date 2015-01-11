@@ -2,6 +2,8 @@ package rjm.romek.source.model;
 
 public class Properties {
 	public static final String RESOURCES_DIR = "src/main/resources";
+	public static final String OUTPUT_DIR = "output/";
+	public static final String NAMING = "naming.json";
 	
 	public static class Path {
 		public static final String LIST_CSV = RESOURCES_DIR + "/list.csv";
