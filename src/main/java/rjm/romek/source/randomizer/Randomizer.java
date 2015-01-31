@@ -21,6 +21,10 @@ public class Randomizer {
 		this.countries = countries;
 		this.random = new Random();
 	}
+
+    public Country randomCountry() {
+        return randomCountry(null);
+    }
 	
 	public Country randomNeighbour(Country startPoint, int radius) {
 		return randomNeighbour(startPoint, null, radius);
@@ -58,7 +62,11 @@ public class Randomizer {
 	
 	private Country randomCountry(Country excluded) {
 		int tries = MAX_RANDOM_TRIES;
-		logger.debug("Going to pick random country for: " + excluded.getName());
+
+        if(excluded != null) {
+            logger.debug("Going to pick random country for: " + excluded.getName());
+        }
+
 		Country randomCountry = null;
 		SetIndexGetter<Country> setIndexGetter = new SetIndexGetter<Country>();
 		
