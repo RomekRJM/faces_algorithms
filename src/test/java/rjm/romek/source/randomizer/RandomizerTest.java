@@ -3,6 +3,8 @@ package rjm.romek.source.randomizer;
 import static org.testng.Assert.*;
 
 import java.io.File;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -42,7 +44,7 @@ public class RandomizerTest {
 	}
 
 	@Test
-	public void test1000000() throws Exception {
+	public void testRandomNeighbour1000000() throws Exception {
 		SetIndexGetter<Country> setIndexGetter = new SetIndexGetter<Country>();
 		Random random = new Random();
 
@@ -67,4 +69,34 @@ public class RandomizerTest {
 
 		}
 	}
+
+    @Test
+    public void testRandomNeighbours1000000() throws Exception {
+        SetIndexGetter<Country> setIndexGetter = new SetIndexGetter<Country>();
+        Random random = new Random();
+
+        for (int i = 0; i < 1000000; ++i) {
+            int index = random.nextInt(countries.size());
+            int radius = random.nextInt(2) + 1;
+            int size = random.nextInt(2) + 2;
+
+            Country country = setIndexGetter.get(countries, index);
+            logger.debug("Picked: " + country.getName());
+            List<Country> randomNeighbours = randomizer.randomNeighbours(country,
+                    radius, size);
+
+            logger.debug(country + " has following " + size + " neighbours in radius >= " + radius + ": " + randomNeighbours);
+
+            assertEquals(randomNeighbours.size(), size);
+            assertContainsUniqueCountries(randomNeighbours);
+
+        }
+    }
+
+    private void assertContainsUniqueCountries(List<Country> countries) {
+        Set<Country> set = new HashSet<Country>();
+        set.addAll(countries);
+
+        assertEquals(set.size(), countries.size());
+    }
 }

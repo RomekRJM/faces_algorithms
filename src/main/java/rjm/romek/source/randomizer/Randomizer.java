@@ -1,5 +1,7 @@
 package rjm.romek.source.randomizer;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -24,6 +26,29 @@ public class Randomizer {
 
     public Country randomCountry() {
         return randomCountry(null);
+    }
+
+    public List<Country> randomNeighbours(Country startPoint, int radius, int size) {
+        List<Country> neighbours = new ArrayList<Country>(size);
+        int tries = MAX_RANDOM_TRIES;
+
+        do {
+            Country neighbour = randomNeighbour(startPoint, radius);
+            if(!neighbours.contains(neighbour)) {
+                neighbours.add(neighbour);
+            } else {
+                --tries;
+            }
+
+            if(tries == 0) {
+                logger.debug("Tries=0 for " + startPoint.getName() + " and radius=" + radius);
+                radius += 1;
+                logger.debug("Radius increased to " + radius);
+                tries = MAX_RANDOM_TRIES;
+            }
+        } while (neighbours.size() < size);
+
+        return neighbours;
     }
 	
 	public Country randomNeighbour(Country startPoint, int radius) {
