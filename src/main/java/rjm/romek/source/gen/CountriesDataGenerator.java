@@ -27,7 +27,6 @@ public class CountriesDataGenerator {
 		CountriesSerializer jsonGenerator = new CountriesSerializer();
 		PhotoDirChecker photoDirAdder = new PhotoDirChecker();
 		Renamer renamer = new Renamer(3);
-		CountryUUIDFetcher countryUUIDFetcher = new CountryUUIDFetcher();
 		
 		Set<Country> countries = csvDeserializer.deserialize(csvFile);
 		flagExtractor.addFlags(countries, flagDir);
@@ -35,7 +34,6 @@ public class CountriesDataGenerator {
 		
 		try {
 			Map<String, String> namingMap = renamer.changeFileNamesToUUIDSWithinFolder(resourcesDir, targetDir, naming);
-			countryUUIDFetcher.fetch(countries, namingMap);
 			jsonGenerator.serialize(jsonFile, countries);
 		} catch (IOException e1) {
 		}

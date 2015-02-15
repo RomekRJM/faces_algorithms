@@ -11,15 +11,15 @@ import org.slf4j.LoggerFactory;
 import rjm.romek.source.model.Border;
 import rjm.romek.source.model.Country;
 
-public class Randomizer {
+public class CountryRandomizer {
 	
-	Logger logger = LoggerFactory.getLogger(Randomizer.class);
+	Logger logger = LoggerFactory.getLogger(CountryRandomizer.class);
 	
 	private Set<Country> countries;
 	private Random random;
 	private static final int MAX_RANDOM_TRIES = 10;
 	
-	public Randomizer(Set<Country> countries) {
+	public CountryRandomizer(Set<Country> countries) {
 		this.countries = countries;
 		this.random = new Random();
 	}

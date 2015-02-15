@@ -22,12 +22,12 @@ public class RandomizerTest {
 	static final Logger logger = LoggerFactory.getLogger(RandomizerTest.class);
 	
 	private Set<Country> countries;
-	private Randomizer randomizer;
+	private CountryRandomizer randomizer;
 	
 	@BeforeMethod
 	public void setUp() {
 		countries = new CsvDeserializer().deserialize(new File(Path.LIST_CSV));
-		randomizer = new Randomizer(countries);		
+		randomizer = new CountryRandomizer(countries);
 	}
 
 	@Test
