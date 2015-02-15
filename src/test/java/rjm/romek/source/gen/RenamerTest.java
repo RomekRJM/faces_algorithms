@@ -33,7 +33,7 @@ public class RenamerTest {
 	@Test
 	public void test() throws Exception {
 		int maxFilesInFolder = 3;
-		Renamer renamer = new Renamer(maxFilesInFolder);
+		Renamer renamer = new Renamer(maxFilesInFolder, new String[]{});
 		renamer.changeFileNamesToUUIDSWithinFolder(RESOURCES_DIR,
 				TEST_DIR, TEST_NAMING);
 		

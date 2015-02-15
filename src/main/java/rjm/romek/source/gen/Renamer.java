@@ -15,27 +15,29 @@ import com.google.gson.Gson;
 
 public class Renamer {
 	public int maxFilesInDir;
+	public String[] dontReplaceFilesEndingWithName;
 
 	public Renamer() {
-		this(Integer.MAX_VALUE);
+		this(Integer.MAX_VALUE, new String[] {});
 	}
 
-	public Renamer(int maxFilesInDir) {
+	public Renamer(int maxFilesInDir, String[] dontReplaceFilesEndingWithName) {
 		this.maxFilesInDir = maxFilesInDir;
+		this.dontReplaceFilesEndingWithName = dontReplaceFilesEndingWithName;
 	}
 
-	public Map<String, String> changeFileNamesToUUIDSWithinFolder(File srcDir, File destDir,
-			File namingMapFile) throws IOException {
+	public Map<String, String> changeFileNamesToUUIDSWithinFolder(File srcDir,
+			File destDir, File namingMapFile) throws IOException {
 		Map<String, String> namingMap = new HashMap<String, String>();
-		
+
 		if (!srcDir.isDirectory()) {
 			return null;
 		}
-		
+
 		if (destDir.exists()) {
 			FileUtils.deleteDirectory(destDir);
 		}
-		
+
 		destDir.mkdir();
 
 		FileUtils.copyDirectory(srcDir, destDir);
@@ -45,7 +47,8 @@ public class Renamer {
 		return namingMap;
 	}
 
-	private void replaceFileNamesWithUUIDSAndWriteNamingMap(File dir, Map<String, String> namingMap) {
+	private void replaceFileNamesWithUUIDSAndWriteNamingMap(File dir,
+			Map<String, String> namingMap) {
 		if (!dir.isDirectory()) {
 			return;
 		}
@@ -61,10 +64,12 @@ public class Renamer {
 			}
 
 			if (cntr <= maxFilesInDir) {
-				String oldFileName = file.getName();
-				String uuidName = renameFileToUUIDPreservingExtension(file);
-				namingMap.put(uuidName, oldFileName);
-			} else if (file.isFile()){
+				if (!fileNameEndsWith(file, dontReplaceFilesEndingWithName)) {
+					String oldFileName = file.getName();
+					String uuidName = renameFileToUUIDPreservingExtension(file);
+					namingMap.put(uuidName, oldFileName);
+				}
+			} else if (file.isFile()) {
 				file.delete();
 			}
 		}
@@ -85,6 +90,16 @@ public class Renamer {
 		file.renameTo(newFile);
 
 		return newName;
+	}
+
+	private boolean fileNameEndsWith(File file, String[] names) {
+		for (String name : names) {
+			if (file.getName().endsWith(name)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	private void writeNamingMap(File file, Map<String, String> namingMap) {
