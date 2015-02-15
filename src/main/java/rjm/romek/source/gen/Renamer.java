@@ -16,13 +16,15 @@ import com.google.gson.Gson;
 public class Renamer {
 	public int maxFilesInDir;
 	public String[] dontReplaceFilesEndingWithName;
+	public String[] dontLimitMaxFilesInDirs;
 
 	public Renamer() {
-		this(Integer.MAX_VALUE, new String[] {});
+		this(Integer.MAX_VALUE, new String[] {}, new String[] {});
 	}
 
-	public Renamer(int maxFilesInDir, String[] dontReplaceFilesEndingWithName) {
+	public Renamer(int maxFilesInDir, String[] dontLimitMaxFilesInDirs, String[] dontReplaceFilesEndingWithName) {
 		this.maxFilesInDir = maxFilesInDir;
+		this.dontLimitMaxFilesInDirs = dontLimitMaxFilesInDirs;
 		this.dontReplaceFilesEndingWithName = dontReplaceFilesEndingWithName;
 	}
 
@@ -59,7 +61,7 @@ public class Renamer {
 		for (File file : files) {
 			if (file.isDirectory()) {
 				replaceFileNamesWithUUIDSAndWriteNamingMap(file, namingMap);
-			} else {
+			} else if (!fileIsInUnlimitedSizeFolder(file, dontLimitMaxFilesInDirs)) {
 				++cntr;
 			}
 
@@ -95,6 +97,19 @@ public class Renamer {
 	private boolean fileNameEndsWith(File file, String[] names) {
 		for (String name : names) {
 			if (file.getName().endsWith(name)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+	
+	private boolean fileIsInUnlimitedSizeFolder(File file, String[] folderNames) {
+		if(file.getAbsolutePath().contains("flags")) {
+			System.out.print("");
+		}
+		for (String name : folderNames) {
+			if (file.getParent().equals(name)) {
 				return true;
 			}
 		}

@@ -26,7 +26,9 @@ public class CountriesDataGenerator {
 		FlagExtractor flagExtractor = new FlagExtractor();
 		CountriesSerializer jsonGenerator = new CountriesSerializer();
 		PhotoDirChecker photoDirAdder = new PhotoDirChecker();
-		Renamer renamer = new Renamer(3, new String[]{".json", ".csv", ".xml", ".txt", ".bash", "flags", "photos", "unknown_photos"});
+		Renamer renamer = new Renamer(3,
+				new String[]{"output", "output\\flags", "output\\unknown_photos"},
+				new String[]{".json", ".csv", ".xml", ".txt", ".bash", "flags", "photos", "unknown_photos"});
 		
 		Set<Country> countries = csvDeserializer.deserialize(csvFile);
 		flagExtractor.addFlags(countries, flagDir);
