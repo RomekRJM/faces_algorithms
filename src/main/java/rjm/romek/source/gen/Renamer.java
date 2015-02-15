@@ -28,9 +28,15 @@ public class Renamer {
 			File namingMapFile) throws IOException {
 		Map<String, String> namingMap = new HashMap<String, String>();
 		
-		if (!srcDir.isDirectory() || !destDir.isDirectory()) {
+		if (!srcDir.isDirectory()) {
 			return null;
 		}
+		
+		if (destDir.exists()) {
+			FileUtils.deleteDirectory(destDir);
+		}
+		
+		destDir.mkdir();
 
 		FileUtils.copyDirectory(srcDir, destDir);
 		replaceFileNamesWithUUIDSAndWriteNamingMap(destDir, namingMap);
