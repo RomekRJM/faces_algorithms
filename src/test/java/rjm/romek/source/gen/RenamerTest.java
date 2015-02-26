@@ -4,6 +4,8 @@ import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -37,19 +39,15 @@ public class RenamerTest {
 		renamer.changeFileNamesToUUIDSWithinFolder(RESOURCES_DIR,
 				TEST_DIR, TEST_NAMING);
 		
-		String mapAsString = FileUtils.readFileToString(TEST_NAMING);
-		
-		Map<String, String> map = new Gson().fromJson(mapAsString, Map.class);
-		
 		Collection<File> oldDir = FileUtils.listFilesAndDirs(RESOURCES_DIR, FileFilterUtils.trueFileFilter(), FileFilterUtils.trueFileFilter());
 		Collection<File> newDir = FileUtils.listFilesAndDirs(TEST_DIR, FileFilterUtils.trueFileFilter(), FileFilterUtils.trueFileFilter());
 		
-		for(Entry<String, String> entry : map.entrySet()) {
-			File newFile = fileIsPartOfCollection(entry.getKey(), newDir);
-			File oldFile = fileIsPartOfCollection(entry.getValue(), oldDir);
+		for(File newFile : newDir) {
+			if(newFile.getName().equals("test")) continue;
+			String oldName = URLDecoder.decode(newFile.getName(), "UTF-8");
+			File oldFile = fileIsPartOfCollection(oldName, oldDir);
 
-			assertNotNull(entry.getKey() + "(" + entry.getValue() +  ") should be found in test directory.", newFile);
-			assertNotNull(entry.getValue() + " should be found in resources directory.", oldFile);
+			assertNotNull(oldName + " should be found in resources directory.", oldFile);
 			
 			if(newFile.isFile()) {
 				if(oldFile.length() != newFile.length()) {

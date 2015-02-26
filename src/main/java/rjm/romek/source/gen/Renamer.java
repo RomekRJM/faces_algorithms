@@ -3,6 +3,8 @@ package rjm.romek.source.gen;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -17,6 +19,10 @@ public class Renamer {
 	public int maxFilesInDir;
 	public String[] dontReplaceFilesEndingWithName;
 	public String[] dontLimitMaxFilesInDirs;
+	char hexDigit[] = {
+	         '0', '1', '2', '3', '4', '5', '6', '7',
+	         '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
+	      };
 
 	public Renamer() {
 		this(Integer.MAX_VALUE, new String[] {}, new String[] {});
@@ -28,12 +34,11 @@ public class Renamer {
 		this.dontReplaceFilesEndingWithName = dontReplaceFilesEndingWithName;
 	}
 
-	public Map<String, String> changeFileNamesToUUIDSWithinFolder(File srcDir,
+	public void changeFileNamesToUUIDSWithinFolder(File srcDir,
 			File destDir, File namingMapFile) throws IOException {
-		Map<String, String> namingMap = new HashMap<String, String>();
 
 		if (!srcDir.isDirectory()) {
-			return null;
+			return;
 		}
 
 		if (destDir.exists()) {
@@ -43,14 +48,10 @@ public class Renamer {
 		destDir.mkdir();
 
 		FileUtils.copyDirectory(srcDir, destDir);
-		replaceFileNamesWithUUIDSAndWriteNamingMap(destDir, namingMap);
-		writeNamingMap(namingMapFile, namingMap);
-
-		return namingMap;
+		enodeFileNames(destDir);
 	}
 
-	private void replaceFileNamesWithUUIDSAndWriteNamingMap(File dir,
-			Map<String, String> namingMap) {
+	private void enodeFileNames(File dir) {
 		if (!dir.isDirectory()) {
 			return;
 		}
@@ -60,16 +61,14 @@ public class Renamer {
 
 		for (File file : files) {
 			if (file.isDirectory()) {
-				replaceFileNamesWithUUIDSAndWriteNamingMap(file, namingMap);
+				enodeFileNames(file);
 			} else if (!fileIsInUnlimitedSizeFolder(file, dontLimitMaxFilesInDirs)) {
 				++cntr;
 			}
 
 			if (cntr <= maxFilesInDir) {
 				if (!fileNameEndsWith(file, dontReplaceFilesEndingWithName)) {
-					String oldFileName = file.getName();
-					String uuidName = renameFileToUUIDPreservingExtension(file);
-					namingMap.put(uuidName, oldFileName);
+					renameFileToEncoded(file);
 				}
 			} else if (file.isFile()) {
 				file.delete();
@@ -77,9 +76,9 @@ public class Renamer {
 		}
 	}
 
-	private String renameFileToUUIDPreservingExtension(File file) {
+	private String renameFileToEncoded(File file) {
 		String separator = System.getProperty("file.separator");
-		String newName = UUID.randomUUID().toString();
+		String newName = encodeName(StringUtils.substringBeforeLast(file.getName(), "."));
 
 		if (file.isFile()) {
 			newName += "."
@@ -92,6 +91,14 @@ public class Renamer {
 		file.renameTo(newFile);
 
 		return newName;
+	}
+	
+	private String encodeName(String raw) {
+		try {
+			return URLEncoder.encode(raw, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			return raw;
+		}
 	}
 
 	private boolean fileNameEndsWith(File file, String[] names) {
@@ -115,18 +122,6 @@ public class Renamer {
 		}
 
 		return false;
-	}
-
-	private void writeNamingMap(File file, Map<String, String> namingMap) {
-		FileOutputStream fos = null;
-
-		try {
-			fos = new FileOutputStream(file);
-			IOUtils.write(new Gson().toJson(namingMap), fos);
-		} catch (IOException e) {
-		} finally {
-			IOUtils.closeQuietly(fos);
-		}
 	}
 
 }

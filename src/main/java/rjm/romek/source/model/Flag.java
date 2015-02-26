@@ -1,12 +1,12 @@
 package rjm.romek.source.model;
 
-public class Person {
+public class Flag {
 	private String name;
 	
-	public Person(String name) {
+	public Flag(String name) {
 		this.name = name;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -25,9 +25,9 @@ public class Person {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof Person))
+		if (!(obj instanceof Flag))
 			return false;
-		Person other = (Person) obj;
+		Flag other = (Flag) obj;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -35,6 +35,4 @@ public class Person {
 			return false;
 		return true;
 	}
-	
-
 }

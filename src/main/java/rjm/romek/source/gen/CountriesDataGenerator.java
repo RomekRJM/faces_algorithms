@@ -35,7 +35,7 @@ public class CountriesDataGenerator {
 		photoDirAdder.disableCountriesWithoutPhotos(countries, photoDir);
 		
 		try {
-			Map<String, String> namingMap = renamer.changeFileNamesToUUIDSWithinFolder(resourcesDir, targetDir, naming);
+			renamer.changeFileNamesToUUIDSWithinFolder(resourcesDir, targetDir, naming);
 			jsonGenerator.serialize(jsonFile, countries);
 		} catch (IOException e1) {
 		}
