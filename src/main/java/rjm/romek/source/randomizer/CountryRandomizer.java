@@ -5,15 +5,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import rjm.romek.source.model.Border;
 import rjm.romek.source.model.Country;
 
 public class CountryRandomizer {
-	
-	Logger logger = LoggerFactory.getLogger(CountryRandomizer.class);
 	
 	private Set<Country> countries;
 	private Random random;
@@ -41,9 +36,9 @@ public class CountryRandomizer {
             }
 
             if(tries == 0) {
-                logger.debug("Tries=0 for " + startPoint.getName() + " and radius=" + radius);
+                //logger.debug("Tries=0 for " + startPoint.getName() + " and radius=" + radius);
                 radius += 1;
-                logger.debug("Radius increased to " + radius);
+                //logger.debug("Radius increased to " + radius);
                 tries = MAX_RANDOM_TRIES;
             }
         } while (neighbours.size() < size);
@@ -73,14 +68,14 @@ public class CountryRandomizer {
 		current = border.getNeighbour();
 		if(radius <= 0) {
 			if(!startPoint.equals(current)) {
-				logger.debug(startPoint.getName() + " not equals to " + ((current!=null) ? current.getName() : null));
+				//logger.debug(startPoint.getName() + " not equals to " + ((current!=null) ? current.getName() : null));
 				return current;
 			} else {
-				logger.debug(startPoint.getName() + " equals to " + ((current!=null) ? current.getName() : null) + ". Picking randomly.");
+				//logger.debug(startPoint.getName() + " equals to " + ((current!=null) ? current.getName() : null) + ". Picking randomly.");
 				return randomCountry(startPoint);
 			}			
 		} else {
-			logger.debug("Going to: " + current.getName() + ", radius: " + radius );
+			//logger.debug("Going to: " + current.getName() + ", radius: " + radius );
 			return randomNeighbour(startPoint, current, radius);			
 		}
 	}
@@ -89,7 +84,7 @@ public class CountryRandomizer {
 		int tries = MAX_RANDOM_TRIES;
 
         if(excluded != null) {
-            logger.debug("Going to pick random country for: " + excluded.getName());
+            //logger.debug("Going to pick random country for: " + excluded.getName());
         }
 
 		Country randomCountry = null;
@@ -102,7 +97,7 @@ public class CountryRandomizer {
 		} while (tries > 0 && randomCountry.equals(excluded));
 		
 		if(tries < 0) {
-			logger.debug("random country exceeded");
+			//logger.debug("random country exceeded");
 		}
 		
 		return randomCountry;
@@ -121,7 +116,7 @@ public class CountryRandomizer {
 		} while (tries >= 0 && randomBorder.getNeighbour().equals(excluded));
 		
 		if(tries < 0) {
-			logger.debug("random border exceeded");
+			//logger.debug("random border exceeded");
 		}
 		
 		return randomBorder;

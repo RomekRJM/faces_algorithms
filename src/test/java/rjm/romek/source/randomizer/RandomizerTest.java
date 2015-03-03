@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -18,8 +16,6 @@ import rjm.romek.source.model.Country;
 import rjm.romek.source.model.Properties.Path;
 
 public class RandomizerTest {
-	
-	static final Logger logger = LoggerFactory.getLogger(RandomizerTest.class);
 	
 	private Set<Country> countries;
 	private CountryRandomizer randomizer;
@@ -53,7 +49,7 @@ public class RandomizerTest {
 			int radius = random.nextInt(2) + 1;
 
 			Country country = setIndexGetter.get(countries, index);
-			logger.debug("Picked: " + country.getName());
+			//logger.debug("Picked: " + country.getName());
 			Country randomNeighbour = randomizer.randomNeighbour(country,
 					radius);
 
@@ -63,8 +59,8 @@ public class RandomizerTest {
 			if (randomNeighbour.equals(country)) {
 				int a = 0;
 			}
-			logger.debug(country.getName() + " is in " + radius
-					+ " radius to " + randomNeighbour.getName() + "\n\n\n");
+			//logger.debug(country.getName() + " is in " + radius
+			//		+ " radius to " + randomNeighbour.getName() + "\n\n\n");
 			assertFalse(randomNeighbour.equals(country), country.getName() + " points to itself!");
 
 		}
@@ -81,11 +77,11 @@ public class RandomizerTest {
             int size = random.nextInt(2) + 2;
 
             Country country = setIndexGetter.get(countries, index);
-            logger.debug("Picked: " + country.getName());
+            //logger.debug("Picked: " + country.getName());
             List<Country> randomNeighbours = randomizer.randomNeighbours(country,
                     radius, size);
 
-            logger.debug(country + " has following " + size + " neighbours in radius >= " + radius + ": " + randomNeighbours);
+            //logger.debug(country + " has following " + size + " neighbours in radius >= " + radius + ": " + randomNeighbours);
 
             assertEquals(randomNeighbours.size(), size);
             assertContainsUniqueCountries(randomNeighbours);
