@@ -15,7 +15,7 @@ import rjm.romek.source.gen.CsvDeserializer;
 import rjm.romek.source.model.Country;
 import rjm.romek.source.model.Properties.Path;
 
-public class RandomizerTest {
+public class CountryRandomizerTest {
 	
 	private Set<Country> countries;
 	private CountryRandomizer randomizer;
@@ -49,20 +49,13 @@ public class RandomizerTest {
 			int radius = random.nextInt(2) + 1;
 
 			Country country = setIndexGetter.get(countries, index);
-			//logger.debug("Picked: " + country.getName());
 			Country randomNeighbour = randomizer.randomNeighbour(country,
 					radius);
 
 			assertNotNull(country);
 			assertNotNull(randomNeighbour);
-
-			if (randomNeighbour.equals(country)) {
-				int a = 0;
-			}
-			//logger.debug(country.getName() + " is in " + radius
-			//		+ " radius to " + randomNeighbour.getName() + "\n\n\n");
 			assertFalse(randomNeighbour.equals(country), country.getName() + " points to itself!");
-
+            assertFalse(randomNeighbour.isDisabled());
 		}
 	}
 
@@ -77,15 +70,11 @@ public class RandomizerTest {
             int size = random.nextInt(2) + 2;
 
             Country country = setIndexGetter.get(countries, index);
-            //logger.debug("Picked: " + country.getName());
             List<Country> randomNeighbours = randomizer.randomNeighbours(country,
                     radius, size);
 
-            //logger.debug(country + " has following " + size + " neighbours in radius >= " + radius + ": " + randomNeighbours);
-
             assertEquals(randomNeighbours.size(), size);
             assertContainsUniqueCountries(randomNeighbours);
-
         }
     }
 
