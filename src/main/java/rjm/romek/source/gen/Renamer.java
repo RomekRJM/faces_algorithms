@@ -19,10 +19,6 @@ public class Renamer {
 	public int maxFilesInDir;
 	public String[] dontReplaceFilesEndingWithName;
 	public String[] dontLimitMaxFilesInDirs;
-	char hexDigit[] = {
-	         '0', '1', '2', '3', '4', '5', '6', '7',
-	         '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
-	      };
 
 	public Renamer() {
 		this(Integer.MAX_VALUE, new String[] {}, new String[] {});

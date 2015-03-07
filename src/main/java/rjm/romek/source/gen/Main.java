@@ -11,7 +11,7 @@ import rjm.romek.source.model.Properties;
 import static rjm.romek.source.model.Properties.Path;
 import static rjm.romek.source.model.Properties.Extension;;
 
-public class CountriesDataGenerator {
+public class Main {
 	
 	public static void main(String [] arg) {
 		File csvFile = new File(Path.LIST_CSV);
