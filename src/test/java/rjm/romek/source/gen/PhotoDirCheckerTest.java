@@ -32,7 +32,6 @@ public class PhotoDirCheckerTest {
 			} else if (!missingCountries.contains(country.getName())) {
 				assertTrue(country.isDisabled(), country.getName() + " does not have matching folder and is not disabled!");
 			}
-			
 		}
 	}
 	
