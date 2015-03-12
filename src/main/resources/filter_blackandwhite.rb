@@ -4,7 +4,7 @@ require 'shellwords'
 def isMonochromatic(image_file)
   mono = 0
   color = 0
-  `convert #{image_file.shellescape} -colors 8 -depth 128 -format %c histogram:info:`.each_line {
+  `convert #{image_file.shellescape} -colors 8 -depth 8 -format %c histogram:info:`.each_line {
     |line|
     line_splitted = line.split(/[\s:(),]/)
     red = line_splitted[-3].to_i
@@ -26,14 +26,27 @@ def isMonochromatic(image_file)
   return mono > color
 end
 
+def isGrayscale(image_file)
+  if `convert #{image_file.shellescape} -colorspace HSL -channel g -separate +channel -format %[fx:mean] info:`.to_f < 0.1
+    return true
+  else
+    return false
+  end
+end
+
+CHECKEDDIR = 'photos'
+
 FileUtils.remove_dir 'gray'
-FileUtils.makedirs 'gray/unknown_photos'
+FileUtils.makedirs 'gray/' + CHECKEDDIR
 
-Dir.glob('unknown_photos/**/*'){
-  |person_photo|
-  grayscale = `convert #{person_photo.shellescape} -colorspace HSL -channel g -separate +channel -format %[fx:mean] info:`
-  monochromatic = isMonochromatic person_photo
-
-  FileUtils.cp(person_photo, "gray/#{person_photo}-#{monochromatic}-#{grayscale}")
-  #puts "#{person_photo} - #{grayscale}"
+Dir.glob(CHECKEDDIR + '/**/*'){
+  |file|
+  if File.stat(file).file?
+    if isGrayscale file
+      #monochromatic = isMonochromatic file
+      newFile = File.basename(file)
+      FileUtils.cp(file, "gray/#{newFile}")
+      #puts "#{file} - #{grayscale}"
+    end
+  end
 }
