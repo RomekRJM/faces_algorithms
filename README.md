@@ -19,7 +19,6 @@ All meaningfull stuff can be found in resources folder:
             "type":"UNSPECIFIED",
             "neighbour":{  
                "name":"Saudi Arabia",
-               "disabled":false,
                "neighbours":[  
                ]
             }
