@@ -65,7 +65,7 @@ public class CountryRandomizer {
 		radius -= border.getType().getDistance();
 		current = border.getNeighbour();
 		if(radius <= 0) {
-			if(!startPoint.equals(current) && !current.isDisabled()) {
+			if(!startPoint.equals(current)) {
 				return current;
 			} else {
 				return randomCountry(startPoint);
@@ -85,7 +85,7 @@ public class CountryRandomizer {
 			int index = random.nextInt(countries.size());
 			randomCountry = setIndexGetter.get(countries, index);
 			--tries;
-		} while (tries > 0 && randomCountry.equals(excluded) && !randomCountry().isDisabled());
+		} while (tries > 0 && randomCountry.equals(excluded));
 		
 		return randomCountry;
 	}

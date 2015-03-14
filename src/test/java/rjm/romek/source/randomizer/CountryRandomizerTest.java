@@ -55,7 +55,6 @@ public class CountryRandomizerTest {
 			assertNotNull(country);
 			assertNotNull(randomNeighbour);
 			assertFalse(randomNeighbour.equals(country), country.getName() + " points to itself!");
-            assertFalse(randomNeighbour.isDisabled());
 		}
 	}
 
@@ -75,7 +74,6 @@ public class CountryRandomizerTest {
 
             assertEquals(randomNeighbours.size(), size);
             assertContainsUniqueCountries(randomNeighbours);
-            assertContainsEnabledCountries(randomNeighbours);
         }
     }
 
@@ -84,11 +82,5 @@ public class CountryRandomizerTest {
         set.addAll(countries);
 
         assertEquals(set.size(), countries.size());
-    }
-
-    private void assertContainsEnabledCountries(List<Country> countries) {
-        for(Country country : countries) {
-            assertFalse(country.isDisabled());
-        }
     }
 }

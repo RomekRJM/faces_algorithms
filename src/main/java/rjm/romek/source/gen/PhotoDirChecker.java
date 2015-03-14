@@ -2,6 +2,7 @@ package rjm.romek.source.gen;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -13,12 +14,16 @@ public class PhotoDirChecker {
 	
 	public void disableCountriesWithoutPhotos(Set<Country> countries, File nationalityDir) {
 		List<String> allDirNames = prepareDirNamesListMatchingCriteria(nationalityDir);
+        Set<Country> countriesMatchingCriteria = new HashSet<Country>();
 
 		for (Country country : countries) {
-			if(!allDirNames.contains(country.getName())) {
-				country.setDisabled(true);
+			if(allDirNames.contains(country.getName())) {
+                countriesMatchingCriteria.add(country);
 			}
 		}
+
+        countries.clear();
+        countries.addAll(countriesMatchingCriteria);
 	}
 	
 	List<String> prepareDirNamesListMatchingCriteria(File nationalityDir) {
