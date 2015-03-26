@@ -1,5 +1,7 @@
 package rjm.romek.source.randomizer;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -63,7 +65,7 @@ public class CountryRandomizer {
 		}
 		
 		radius -= border.getType().getDistance();
-		current = border.getNeighbour();
+		current = findByName(border.getNeighbourName());
 		if(radius <= 0) {
 			if(!startPoint.equals(current)) {
 				return current;
@@ -100,8 +102,18 @@ public class CountryRandomizer {
 			int index = random.nextInt(borders.size());
 			randomBorder = setIndexGetter.get(borders, index);
 			--tries;
-		} while (tries >= 0 && randomBorder.getNeighbour().equals(excluded));
+		} while (tries >= 0 && StringUtils.equals(randomBorder.getNeighbourName(), excluded.getName()));
 		
 		return randomBorder;
 	}
+
+    private Country findByName(String name) {
+        for(Country country : countries) {
+            if(StringUtils.equals(country.getName(), name)) {
+                return country;
+            }
+        }
+
+        return null;
+    }
 }

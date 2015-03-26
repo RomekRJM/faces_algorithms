@@ -47,7 +47,7 @@ public class CsvDeserializer {
 					
 					Country neighbourCountry = new Country();
 					neighbourCountry.setName(neighbour);
-					country.addNeighbour(new Border(neighbourCountry, type));
+					country.addNeighbour(new Border(neighbourCountry.getName(), type));
 				}
 				
 				countries.add(country);

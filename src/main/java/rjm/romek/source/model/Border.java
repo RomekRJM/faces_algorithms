@@ -2,9 +2,9 @@ package rjm.romek.source.model;
 
 public class Border {
 	private BorderType type;
-	private Country neighbour;
+	private String neighbour;
 	
-	public Border(Country neighbour, BorderType type) {
+	public Border(String neighbour, BorderType type) {
 		this.neighbour = neighbour;
 		this.type = type;
 	}
@@ -17,11 +17,11 @@ public class Border {
 		this.type = type;
 	}
 	
-	public Country getNeighbour() {
+	public String getNeighbourName() {
 		return neighbour;
 	}
 	
-	public void setNeighbour(Country neighbour) {
+	public void setNeighbour(String neighbour) {
 		this.neighbour = neighbour;
 	}
 	
