@@ -3,27 +3,35 @@ faces_algorithms
 
 Project used to gather nationality data of countries and famous nationals along with pictures for my upcomming android app.
 Wikipedia has been used as a source of data. All images are on Creative Commons licence and have been mostly fetched 
-from wiki pages with bash/jQuery scripts.
+from wiki pages with bash/jQuery scripts. Some ruby code was used along with imagemagic, to extract grayscale pictures.
 
-All meaningfull stuff can be found in resources folder:
+All meaningful stuff can be found in resources folder:
 
 <b>/list.json</b> - contains encoded countries, like :
 
 ```
-{  
-      "flag":"23px-Flag_of_the_United_Arab_Emirates.png",
-      "name":"United Arab Emirates",
-      "disabled":false,
-      "neighbours":[  
-         {  
+{
+      "flag":"23px-Flag_of_Finland.png",
+      "name":"Finland",
+      "neighbours":[
+         {
+            "type":"SEA",
+            "neighbour":"Estonia"
+         },
+         {
+            "type":"LAND",
+            "neighbour":"Norway"
+         },
+         {
             "type":"UNSPECIFIED",
-            "neighbour":{  
-               "name":"Saudi Arabia",
-               "neighbours":[  
-               ]
-            }
+            "neighbour":"Russia"
+         },
+         {
+            "type":"UNSPECIFIED",
+            "neighbour":"Sweden"
          }
-}
+      ]
+   }
 ```
 
 <b>/flags/</b> - miniatures of flags for all countries
