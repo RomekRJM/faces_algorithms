@@ -1,5 +1,5 @@
 Abkhazia:  Georgia,  Russia,  Turkey (M),  Ukraine (M)
-Afghanistan:  China(L),   Iran(L),   Pakistan(L),   Tajikistan(L),   Turkmenistan(L),   Uzbekistan(L), 
+Afghanistan:  China(L),   Iran(L),   Pakistan(L),   Tajikistan(L),   Turkmenistan(L),   Uzbekistan(L)
 Albania:  Croatia(M),   Greece,  Italy(M),   Republic of Macedonia(L),   Montenegro,  Serbia(L),   Kosovo(L)
 Algeria:  Italy(M),   Libya(L),   Mali(L),   Mauritania(L),   Morocco,  Niger(L),   Spain(M),   Tunisia
 American Samoa:  Samoa(M),   Tonga(M),  New Zealand(M)
@@ -12,7 +12,7 @@ Armenia:  Azerbaijan(L), Georgia(L), Iran(L), Turkey(L), Nagorno-Karabakh(L)
 Aruba:  Dominican Republic(M), Venezuela (M)
 Australia:  East Timor(M),   Indonesia(M),   New Zealand(M),   Papua New Guinea(M),   Solomon Islands(M), France(M), East Timor(M),   Indonesia(M),   Papua New Guinea(M),   Solomon Islands(M)
 Austria:  Czech Republic(L),   Germany(L),   Hungary(L),   Italy(L),   Liechtenstein(L),   Slovakia(L),   Slovenia(L),    Switzerland (L)
-Azerbaijan:  Armenia(L),   Georgia(L),   Iran, Nagorno-Karabakh(L),   Russia, Turkey(L),   Turkmenistan(M), 
+Azerbaijan:  Armenia(L),   Georgia(L),   Iran(L), Nagorno-Karabakh(L),   Russia(L), Turkey(L),   Turkmenistan(M)
 Bahamas:  Cuba(M),   Haiti(M),   United States(M), United Kingdom(M)
 Bahrain:  Iran(M),   Qatar(M),   Saudi Arabia (M)
 Bangladesh:  Burma,  India
@@ -95,7 +95,7 @@ Hungary:  Austria(L),   Croatia(L),   Romania(L),   Serbia(L),   Slovakia(L),   
 Iceland:  Denmark(M),  Norway(M)
 India:  Bangladesh,  Bhutan(L),   Burma,  China(L),   Indonesia(M),   Maldives(M),     Nepal(L),   Pakistan,  Sri Lanka(M),   Thailand (M)
 Indonesia:  Australia(M),   East Timor,  India(M),   Malaysia,  Palau(M),   Papua New Guinea,  Philippines(M),   Singapore(M),   Thailand(M),   Vietnam(M)
-Iran:  Afghanistan(L),   Armenia(L),   Azerbaijan, ,  Bahrain(M),   Iraq,  Kuwait(M), Nagorno-Karabakh(L),   Oman(M),   Pakistan,  Qatar(M),   Saudi Arabia(M),   Turkey(L),   Turkmenistan, United Arab Emirates (M)
+Iran:  Afghanistan(L),   Armenia(L),   Azerbaijan,  Bahrain(M),   Iraq,  Kuwait(M), Nagorno-Karabakh(L),   Oman(M),   Pakistan,  Qatar(M),   Saudi Arabia(M),   Turkey(L),   Turkmenistan, United Arab Emirates (M)
 Iraq:  Iran,  Jordan(L),   Kuwait,  Saudi Arabia(L),   Syria(L),   Turkey (L)
 Ireland:  United Kingdom
 Isle of Man: 
@@ -123,7 +123,7 @@ Liechtenstein:  Austria(L),    Switzerland (L)
 Lithuania:  Belarus(L),   Latvia,  Poland,  Russia,  Sweden (M)
 Luxembourg:  Belgium(L),   France(L),   Germany (L)
 Macau: 
-Republic of Macedonia:  Albania(L),   Bulgaria(L),   Greece(L),   Serbia(L),   Kosovo,  (L)
+Republic of Macedonia:  Albania(L),   Bulgaria(L),   Greece(L),   Serbia(L),   Kosovo(L)
 Madagascar:  Comoros(M),   France(M),   Mozambique(M),   Seychelles(M),   France(M)
 Malawi:  Mozambique(L),   Tanzania(L),   Zambia (L)
 Malaysia:  Brunei,  Indonesia,  Philippines(M),   Singapore(M),   Thailand,  Vietnam (M)
@@ -138,7 +138,7 @@ Federated States of Micronesia:  Marshall Islands(M),   Palau(M),   Papua New Gu
 Moldova:  Romania(L),   Ukraine(L),   Transnistria (L)
 Monaco:  France
 Mongolia:  China(L),   Russia (L)
-Montenegro:  Albania,  Bosnia and Herzegovina(L),   Croatia,  Italy(M),   Serbia(L),   Kosovo,  (L)
+Montenegro:  Albania,  Bosnia and Herzegovina(L),   Croatia,  Italy(M),   Serbia(L),   Kosovo(L)
 Montserrat:  Antigua and Barbuda(M),   France(M),   Saint Kitts and Nevis,  Venezuela (M)
 Morocco:  Algeria,  Portugal(M),   Spain,  Mauritania
 Mozambique:  Comoros(M),   France(M),   Madagascar(M),   Malawi(L),   South Africa,  Swaziland(L),   Tanzania,  Zambia(L),   Zimbabwe(L), France(M)
@@ -147,7 +147,7 @@ Namibia:  Angola,  Botswana(L),   South Africa,  Zambia (L)
 Nauru:  Kiribati(M),   Marshall Islands (M)
 Nepal:  India(L),   China (L)
 Netherlands:  Belgium,  Germany,  Saint Kitts and Nevis(M),   United Kingdom(M),   Venezuela(M),  United States(M)
-New Caledonia:  Australia(M),   Fiji(M),   Papua New Guinea(M),   Solomon Islands(M),   Vanuatu(M),   Norfolk Island, (Australia) (M)
+New Caledonia:  Australia(M),   Fiji(M),   Papua New Guinea(M),   Solomon Islands(M),   Vanuatu(M),   Norfolk Island(M)
 New Zealand:  Australia(M),   Fiji(M),   Kiribati(M),   Samoa(M),   Tonga(M), United States(M), France(M) 
 Nicaragua:  Colombia(M),   Costa Rica,  El Salvador(M),   Honduras
 Niger:  Algeria(L),   Benin(L),   Burkina Faso(L),   Chad(L),   Libya(L),   Mali(L),   Nigeria (L)

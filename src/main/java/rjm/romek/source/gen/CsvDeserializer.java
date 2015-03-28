@@ -1,5 +1,7 @@
 package rjm.romek.source.gen;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,7 +27,14 @@ public class CsvDeserializer {
 				int colonPos = line.indexOf(":");
 				Country country = new Country();
 				country.setName(line.substring(0, colonPos));
-				String [] neighbours = line.substring(colonPos+1).split(",");
+                String substingAfterColon = line.substring(colonPos+1);
+				String [] neighbours;
+
+                if(StringUtils.isNotBlank(substingAfterColon)) {
+                    neighbours = substingAfterColon.split(",");
+                } else {
+                    neighbours = new String[0];
+                }
 				
 				for(String neighbour : neighbours) {
 					

@@ -47,7 +47,7 @@ public class CountryRandomizer {
     }
 	
 	public Country randomNeighbour(Country startPoint, int radius) {
-		return randomNeighbour(startPoint, null, radius);
+		return randomNeighbour(startPoint, startPoint, radius);
 	}
 	
 	private Country randomNeighbour(Country startPoint, Country current, int radius) {
