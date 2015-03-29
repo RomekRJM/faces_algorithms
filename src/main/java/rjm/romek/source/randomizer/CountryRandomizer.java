@@ -76,44 +76,46 @@ public class CountryRandomizer {
 			return randomNeighbour(startPoint, current, radius);			
 		}
 	}
-	
+
+    private Country findByName(String name) {
+        Country found = null;
+        for(Country country : countries) {
+            if(StringUtils.equals(country.getName(), name)) {
+                found = country;
+                break;
+            }
+        }
+
+        return found;
+    }
+
 	private Country randomCountry(Country excluded) {
 		int tries = MAX_RANDOM_TRIES;
 
 		Country randomCountry = null;
 		SetIndexGetter<Country> setIndexGetter = new SetIndexGetter<Country>();
-		
+
 		do {
 			int index = random.nextInt(countries.size());
 			randomCountry = setIndexGetter.get(countries, index);
 			--tries;
 		} while (tries > 0 && randomCountry.equals(excluded));
-		
+
 		return randomCountry;
 	}
-	
+
 	private Border randomBorder(Country country, Country excluded) {
 		int tries = MAX_RANDOM_TRIES;
 		Set<Border> borders = country.getBorders();
 		SetIndexGetter<Border> setIndexGetter = new SetIndexGetter<Border>();
 		Border randomBorder = null;
-		
+
 		do {
 			int index = random.nextInt(borders.size());
 			randomBorder = setIndexGetter.get(borders, index);
 			--tries;
 		} while (tries >= 0 && StringUtils.equals(randomBorder.getNeighbourName(), excluded.getName()));
-		
+
 		return randomBorder;
 	}
-
-    private Country findByName(String name) {
-        for(Country country : countries) {
-            if(StringUtils.equals(country.getName(), name)) {
-                return country;
-            }
-        }
-
-        return null;
-    }
 }
