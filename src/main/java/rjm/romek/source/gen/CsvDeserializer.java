@@ -18,16 +18,19 @@ public class CsvDeserializer {
 	
 	public Set<Country> deserialize(File csvFile) {
 		BufferedReader br = null;
-		String line = null;
+		String line;
 		Set<Country> countries = new HashSet<Country>();
 		
 		try {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(csvFile), System.getProperty("file.encoding")));
 			while((line = br.readLine()) != null) {
 				int colonPos = line.indexOf(":");
+                int firstBracketPos = line.indexOf("(");
+                int secondBracketPos = line.indexOf(")");
 				Country country = new Country();
-				country.setName(line.substring(0, colonPos));
+				country.setName(line.substring(0, firstBracketPos));
                 String substingAfterColon = line.substring(colonPos+1);
+                country.setContinent(line.substring(firstBracketPos + 1, secondBracketPos));
 				String [] neighbours;
 
                 if(StringUtils.isNotBlank(substingAfterColon)) {
@@ -38,7 +41,7 @@ public class CsvDeserializer {
 				
 				for(String neighbour : neighbours) {
 					
-					BorderType type = null;
+					BorderType type;
 					int bracketPos = neighbour.indexOf("(");
 					
 					if(bracketPos > -1) {

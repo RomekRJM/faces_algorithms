@@ -6,6 +6,7 @@ import java.util.Set;
 public class Country {
 	private String flag;
 	private String name;
+    private String continent;
 
 	private Set<Border> neighbours;
 	
@@ -41,10 +42,18 @@ public class Country {
 		neighbours.add(neighbour);
 	}
 
+    public String getContinent() {
+        return continent;
+    }
+
+    public void setContinent(String continent) {
+        this.continent = continent;
+    }
+
 	@Override
 	public String toString() {
 		return "Country [flag=" + flag + ", name="
-				+ name + ", neighbours=" + neighbours + "]";
+				+ name + ", neighbours=" + neighbours + ", continent=" + continent + "]";
 	}
 
 	@Override
@@ -84,5 +93,4 @@ public class Country {
 			return false;
 		return true;
 	}
-
 }

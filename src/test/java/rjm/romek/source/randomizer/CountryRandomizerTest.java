@@ -86,6 +86,25 @@ public class CountryRandomizerTest {
         }
     }
 
+    @Test
+    public void testRandomCountriesFromDifferentContinents1000000() throws Exception {
+        SetIndexGetter<Country> setIndexGetter = new SetIndexGetter<Country>();
+        Random random = new Random();
+
+        for (int i = 0; i < 1000000; ++i) {
+            int index = random.nextInt(countries.size());
+
+            Country country = setIndexGetter.get(countries, index);
+            List<Country> randomNeighbour = randomizer.randomCountriesFromDifferentContinents(country, 3);
+
+            assertNotNull(country);
+            assertNotNull(randomNeighbour);
+            assertFalse(randomNeighbour.equals(country), country.getName() + " points to itself!");
+            assertValidCountry(country);
+            assertNotRepeatedContinent(country, randomNeighbour);
+        }
+    }
+
     private void assertContainsUniqueCountries(List<Country> countries) {
         Set<Country> set = new HashSet<Country>();
         set.addAll(countries);
@@ -105,6 +124,12 @@ public class CountryRandomizerTest {
 
         for(Border neighbour : country.getBorders()) {
             assertTrue(StringUtils.isNotBlank(neighbour.getNeighbourName()));
+        }
+    }
+
+    private void assertNotRepeatedContinent(Country country, List<Country> countries) {
+        for(Country c : countries) {
+            assertFalse(StringUtils.equals(c.getContinent(), country.getContinent()));
         }
     }
 }

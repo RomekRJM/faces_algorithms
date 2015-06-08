@@ -21,6 +21,26 @@ public class CountryRandomizer {
 		this.random = new Random();
 	}
 
+    public List<Country> randomCountriesFromDifferentContinents(Country startPoint, int size) {
+        List<Country> neighbours = new ArrayList<Country>(size);
+        int tries = MAX_RANDOM_TRIES;
+
+        do {
+            Country next = randomCountry();
+            if(!neighbours.contains(next) && !StringUtils.equals(startPoint.getContinent(), next.getContinent())) {
+                neighbours.add(next);
+            } else {
+                --tries;
+            }
+
+            if(tries == 0) {
+                tries = MAX_RANDOM_TRIES;
+            }
+        } while (neighbours.size() < size);
+
+        return neighbours;
+    }
+
     public Country randomCountry() {
         return randomCountry(null);
     }
@@ -56,7 +76,7 @@ public class CountryRandomizer {
 			return randomCountry(startPoint);
 		}
 
-		Border border = null;
+		Border border;
 		
 		if(current != null) {
 			border = randomBorder(current, startPoint);
@@ -92,7 +112,7 @@ public class CountryRandomizer {
 	private Country randomCountry(Country excluded) {
 		int tries = MAX_RANDOM_TRIES;
 
-		Country randomCountry = null;
+		Country randomCountry;
 		SetIndexGetter<Country> setIndexGetter = new SetIndexGetter<Country>();
 
 		do {
@@ -108,7 +128,7 @@ public class CountryRandomizer {
 		int tries = MAX_RANDOM_TRIES;
 		Set<Border> borders = country.getBorders();
 		SetIndexGetter<Border> setIndexGetter = new SetIndexGetter<Border>();
-		Border randomBorder = null;
+		Border randomBorder;
 
 		do {
 			int index = random.nextInt(borders.size());

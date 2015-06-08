@@ -4,6 +4,7 @@ faces_algorithms
 Project used to gather nationality data of countries and famous nationals along with pictures for my upcomming android app.
 Wikipedia has been used as a source of data. All images are on Creative Commons licence and have been mostly fetched 
 from wiki pages with bash/jQuery scripts. Some ruby code was used along with imagemagic, to extract grayscale pictures.
+A bit of python, to inject information about continents.
 
 All meaningful stuff can be found in resources folder:
 
@@ -13,6 +14,7 @@ All meaningful stuff can be found in resources folder:
 {
       "flag":"23px-Flag_of_Finland.png",
       "name":"Finland",
+      "continent":"EUROPE",
       "neighbours":[
          {
             "type":"SEA",
