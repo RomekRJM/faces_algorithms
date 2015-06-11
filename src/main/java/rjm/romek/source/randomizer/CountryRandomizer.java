@@ -27,7 +27,19 @@ public class CountryRandomizer {
 
         do {
             Country next = randomCountry();
-            if(!neighbours.contains(next) && !StringUtils.equals(startPoint.getContinent(), next.getContinent())) {
+            boolean canBeAdded = true;
+
+            if(StringUtils.equals(startPoint.getContinent(), next.getContinent())) {
+                canBeAdded = false;
+            }
+
+            for(Country country : neighbours) {
+                if(StringUtils.equals(country.getContinent(), next.getContinent())) {
+                   canBeAdded = false;
+                }
+            }
+
+            if(!neighbours.contains(next) && canBeAdded) {
                 neighbours.add(next);
             } else {
                 --tries;

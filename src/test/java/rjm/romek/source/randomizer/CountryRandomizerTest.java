@@ -128,8 +128,12 @@ public class CountryRandomizerTest {
     }
 
     private void assertNotRepeatedContinent(Country country, List<Country> countries) {
+        Set<String> continents = new HashSet<String>();
         for(Country c : countries) {
-            assertFalse(StringUtils.equals(c.getContinent(), country.getContinent()));
+            continents.add(c.getContinent());
         }
+        continents.add(country.getContinent());
+
+        assertEquals(continents.size(), countries.size() + 1);
     }
 }
