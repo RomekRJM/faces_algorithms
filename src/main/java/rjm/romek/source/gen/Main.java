@@ -26,7 +26,7 @@ public class Main {
 		FlagExtractor flagExtractor = new FlagExtractor();
 		CountriesSerializer jsonGenerator = new CountriesSerializer();
 		PhotoDirChecker photoDirAdder = new PhotoDirChecker();
-		Renamer renamer = new Renamer(3,
+		Renamer renamer = new Renamer(30,
 				new String[]{"output", "output\\flags", "output\\unknown_photos"},
 				new String[]{".json", ".csv", ".xml", ".txt", ".bash", "flags", "photos", "unknown_photos"});
 		

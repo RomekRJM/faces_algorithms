@@ -29,7 +29,7 @@ public class PicturesTest {
 		File[] nationalityDirs = picturesDir.listFiles();
 
 		for (File nationalityDir : nationalityDirs) {
-			assertTrue(nationalityDir.isDirectory());
+			assertTrue(nationalityDir.isDirectory(), nationalityDir.getAbsolutePath() + " is not directory");
 			File [] photos = nationalityDir.listFiles();
 			picturesPerNationality.put(nationalityDir.getName(), new Integer(photos.length));
 		}
